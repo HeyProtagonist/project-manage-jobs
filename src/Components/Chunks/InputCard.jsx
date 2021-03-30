@@ -9,13 +9,10 @@ const initialCardState = {
   priority: 'Low',
 }
 
-const InputCard = ({
-  toggleTransform,
-  transformDiv,
-  setTaskListState,
-}) => {
+const InputCard = ({ toggleTransform, transformDiv, setTaskListState }) => {
   const [currPriority, setCurrPriority] = useState('low')
   const [cardDatas, setCardDatas] = useState(initialCardState)
+  // const { setTaskListState } = useContext(TaskContext)
 
   const closeWithoutSave = () => {
     setCardDatas(initialCardState)
@@ -30,17 +27,18 @@ const InputCard = ({
 
   const pushToList = () => {
     setTaskListState((task) => {
-      return [
-        ...task,
-        {
-          id: (Math.random() * 100).toFixed(0),
-          taskName: cardDatas.taskName,
-          taskType: cardDatas.taskType,
-          peoples,
-          priority: currPriority,
-          status: 'wip',
-        },
-      ]
+      const newTask = {
+        id: (Math.random() * 100).toString(16),
+        taskName: cardDatas.taskName,
+        taskType: cardDatas.taskType,
+        peoples,
+        priority: currPriority,
+        status: 'wip',
+      }
+
+      console.log([...task, newTask])
+
+      return [...task, newTask]
     })
 
     setCardDatas(initialCardState)

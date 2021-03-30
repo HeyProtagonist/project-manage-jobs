@@ -1,20 +1,30 @@
-import React from 'react'
-import HeaderLayout from './Components/Layouts/HeaderLayout'
-import NavigationBarLayout from './Components/Layouts/NavigationBarLayout'
-import MainLayout from './Components/Layouts/MainLayout'
+import React, { createContext } from 'react'
 import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
+import HeaderLayout from './Components/Layouts/HeaderLayout'
+import MainLayout from './Components/Layouts/MainLayout'
+import NavigationBarLayout from './Components/Layouts/NavigationBarLayout'
+import useTaskList from './hooks/useTaskList'
+
+export const TaskContext = createContext({
+  taskListState: null,
+  setTaskListState: null,
+})
 
 function App({ children }) {
+  const [taskListState, setTaskListState] = useTaskList()
+
   return (
-    <DndProvider backend={HTML5Backend}>
-      <div className='grid grid-cols-4 grid-rows-6 glassmorphism'>
-        <NavigationBarLayout />
-        <HeaderLayout />
-        <MainLayout children={children} />
-      </div>
-    </DndProvider>
+    <div className='grid grid-cols-4 grid-rows-6 glassmorphism'>
+      <NavigationBarLayout />
+      <HeaderLayout />
+      <TaskContext.Provider value={{ taskListState, setTaskListState }}>
+        <DndProvider backend={HTML5Backend}>
+          <MainLayout children={children} />
+        </DndProvider>
+      </TaskContext.Provider>
+    </div>
   )
 }
 
-export default App
+export default React.memo(App)

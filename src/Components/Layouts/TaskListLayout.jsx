@@ -6,6 +6,9 @@ import TaskCard from '../Chunks/TaskCard'
 
 const TaskListLayout = () => {
   const [taskListState, setTaskListState] = useTaskList()
+  // const { taskListState, setTaskListState } = useContext(TaskContext)
+
+  // useEffect(() => console.log('😎', taskListState), [taskListState])
 
   return (
     <div className='my-10'>

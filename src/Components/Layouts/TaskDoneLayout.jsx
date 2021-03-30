@@ -6,7 +6,7 @@ import { ItemTypes } from '../utils/items'
 import { CardContext } from './MyTaskLayout'
 
 const TaskDoneLayout = () => {
-  const [taskListState, setTaskListState] = useTaskList()
+  const [taskListState] = useTaskList()
   const { markAsDone } = useContext(CardContext)
 
   const [{ isOver }, drop] = useDrop(

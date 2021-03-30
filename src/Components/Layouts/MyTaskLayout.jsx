@@ -1,5 +1,5 @@
-import React, { createContext, useEffect } from 'react'
-import useTaskList from '../../hooks/useTaskList'
+import React, { createContext, useContext } from 'react'
+import { TaskContext } from '../../App'
 import TaskDoneLayout from '../Layouts/TaskDoneLayout'
 import TaskListLayout from '../Layouts/TaskListLayout'
 
@@ -8,16 +8,15 @@ export const CardContext = createContext({
 })
 
 const MyTaskLayout = () => {
-  const [taskListState, setTaskListState] = useTaskList()
+  const { taskListState, setTaskListState } = useContext(TaskContext)
 
   const markAsDone = (id) => {
     const task = taskListState.filter((task, i) => task.id === id)
-    console.log(task)
     task[0].status = 'done'
-    console.log(taskListState)
     setTaskListState(
       taskListState.filter((task, i) => task.id !== id).concat(task[0])
     )
+    console.log(taskListState)
   }
 
   return (
