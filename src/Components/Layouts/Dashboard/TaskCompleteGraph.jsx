@@ -1,5 +1,5 @@
 import React from 'react'
-import DropDown from '../Chunks/DropDown'
+import DropDown from '../../Chunks/DropDown'
 import { Line } from 'react-chartjs-2'
 
 const outOfTens = [
@@ -11,7 +11,7 @@ const outOfTens = [
   { id: 6, taskId: 9, progress: 90 },
 ]
 
-const TaskComplete = () => {
+const TaskCompleteGraph = () => {
   const data = {
     labels: [4, 5, 6, 7, 8, 9],
     datasets: [
@@ -60,4 +60,4 @@ const TaskComplete = () => {
   )
 }
 
-export default TaskComplete
+export default TaskCompleteGraph

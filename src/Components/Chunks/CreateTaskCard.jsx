@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { IoAddOutline } from 'react-icons/io5'
 import InputCard from '../Chunks/InputCard'
 
-const CreateTaskCard = ({ setTaskListState }) => {
+const CreateTaskCard = () => {
   const [toggleTransform, setToggleTransform] = useState(false)
 
   const transformDiv = () => setToggleTransform(!toggleTransform)
@@ -24,7 +24,6 @@ const CreateTaskCard = ({ setTaskListState }) => {
         toggleTransform={toggleTransform}
         transformDiv={transformDiv}
         setToggleTransform={setToggleTransform}
-        setTaskListState={setTaskListState}
       />
     </>
   )

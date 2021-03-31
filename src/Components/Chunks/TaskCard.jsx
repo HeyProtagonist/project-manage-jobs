@@ -4,7 +4,7 @@ import PriorityBadge from '../Atoms/PriorityBadge'
 import ProfileIcon from '../Atoms/ProfileIcon'
 import { ItemTypes } from '../utils/items'
 
-const TaskCard = ({ id, taskName, taskType, peoples, priority }) => {
+const TaskCard = ({ id, taskName, taskType, peoples, priority, status }) => {
   const [{ isDragging }, drag] = useDrag(() => ({
     item: {
       id,

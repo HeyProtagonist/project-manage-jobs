@@ -1,4 +1,4 @@
-export const Peoples = [
+export const peoples = [
   {
     name: 'dummy-1',
     picUrl: 'https://avatars.githubusercontent.com/u/7525670?v=4',

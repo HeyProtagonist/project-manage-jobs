@@ -1,5 +1,5 @@
 import React from 'react'
-import DashTaskCard from '../Chunks/DashTaskCard'
+import DashTaskCard from '../../Chunks/DashTaskCard'
 
 const DashCards = [
   {

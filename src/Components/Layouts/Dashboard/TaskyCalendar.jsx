@@ -1,7 +1,7 @@
 import React from 'react'
 import { BiCalendar } from 'react-icons/bi'
-import DateToday from '../Atoms/DateToday'
-import { taskyDays } from '../Dummys/taskyDays'
+import DateToday from '../../Atoms/DateToday'
+import { taskyDays } from '../../Dummys/taskyDays'
 
 const TaskyCalendar = () => {
   return (

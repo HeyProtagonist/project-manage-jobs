@@ -1,18 +1,18 @@
 import React, { useContext } from 'react'
 import { useDrop } from 'react-dnd'
-import useTaskList from '../../hooks/useTaskList'
+import { TaskContext } from '../../App'
 import TaskCard from '../Chunks/TaskCard'
 import { ItemTypes } from '../utils/items'
-import { CardContext } from './MyTaskLayout'
+import { CardContext } from './TaskLayout'
 
 const TaskDoneLayout = () => {
-  const [taskListState] = useTaskList()
   const { markAsDone } = useContext(CardContext)
+  const { taskListState } = useContext(TaskContext)
 
   const [{ isOver }, drop] = useDrop(
     () => ({
       accept: ItemTypes.CARD,
-      drop: (item, moniter) => markAsDone(item.id),
+      drop: (item, moniter) => markAsDone(item, taskListState),
       collect: (monitor) => ({
         isOver: !!monitor.isOver(),
       }),
@@ -33,7 +33,7 @@ const TaskDoneLayout = () => {
         {taskListState
           .filter((task, i) => task.status === 'done')
           .map((task) => (
-            <TaskCard {...task} key={task.id} />
+            <TaskCard {...task} key={task.id.toString()} />
           ))}
       </div>
     </div>

@@ -1,14 +1,11 @@
-import React from 'react'
-import useTaskList from '../../hooks/useTaskList'
+import React, { useContext } from 'react'
+import { TaskContext } from '../../App'
 import CreateTaskCard from '../Chunks/CreateTaskCard'
 import RenderPriorities from '../Chunks/RenderPriorities'
 import TaskCard from '../Chunks/TaskCard'
 
-const TaskListLayout = () => {
-  const [taskListState, setTaskListState] = useTaskList()
-  // const { taskListState, setTaskListState } = useContext(TaskContext)
-
-  // useEffect(() => console.log('😎', taskListState), [taskListState])
+const TaskWipLayout = () => {
+  const { taskListState } = useContext(TaskContext)
 
   return (
     <div className='my-10'>
@@ -25,10 +22,11 @@ const TaskListLayout = () => {
             <TaskCard {...task} key={task.id.toString()} />
           ))}
 
-        <CreateTaskCard setTaskListState={setTaskListState} />
+        {/* <CreateTaskCard setTaskListState={setTaskListState} /> */}
+        <CreateTaskCard />
       </div>
     </div>
   )
 }
 
-export default TaskListLayout
+export default TaskWipLayout

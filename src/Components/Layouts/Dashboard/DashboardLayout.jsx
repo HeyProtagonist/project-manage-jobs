@@ -2,8 +2,8 @@ import React from 'react'
 import AsideLayout from './AsideLayout'
 import DashLinks from './DashLinks'
 import AvailableTasks from './AvailableTasks'
-import StatsQuickPeek from '../Chunks/StatsQuickPeek'
-import TaskyCalendar from '../Layouts/TaskyCalendar'
+import StatsQuickPeek from '../../Chunks/StatsQuickPeek'
+import TaskyCalendar from './TaskyCalendar'
 
 const DashboardLayout = () => {
   return (

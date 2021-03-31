@@ -1,18 +1,19 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { MdDone } from 'react-icons/md'
 import { VscClose } from 'react-icons/vsc'
-import { Peoples as peoples } from '../Dummys/Peoples'
+import { TaskContext } from '../../App'
+import { peoples } from '../Dummys/peoples'
 
 const initialCardState = {
   taskName: '',
   taskType: '',
-  priority: 'Low',
+  priority: 'low',
 }
 
-const InputCard = ({ toggleTransform, transformDiv, setTaskListState }) => {
+const InputCard = ({ toggleTransform, transformDiv }) => {
   const [currPriority, setCurrPriority] = useState('low')
   const [cardDatas, setCardDatas] = useState(initialCardState)
-  // const { setTaskListState } = useContext(TaskContext)
+  const { setTaskListState } = useContext(TaskContext)
 
   const closeWithoutSave = () => {
     setCardDatas(initialCardState)
@@ -40,7 +41,6 @@ const InputCard = ({ toggleTransform, transformDiv, setTaskListState }) => {
 
       return [...task, newTask]
     })
-
     setCardDatas(initialCardState)
     transformDiv()
   }

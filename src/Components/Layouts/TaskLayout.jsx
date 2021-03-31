@@ -1,22 +1,24 @@
 import React, { createContext, useContext } from 'react'
 import { TaskContext } from '../../App'
-import TaskDoneLayout from '../Layouts/TaskDoneLayout'
-import TaskListLayout from '../Layouts/TaskListLayout'
+import TaskDoneLayout from './TaskDoneLayout'
+import TaskWipLayout from './TaskWipLayout'
 
 export const CardContext = createContext({
   markAsDone: null,
 })
 
-const MyTaskLayout = () => {
+const TaskLayout = () => {
   const { taskListState, setTaskListState } = useContext(TaskContext)
 
-  const markAsDone = (id) => {
+  // useEffect(() => console.log('Rendered: TaskLayout'), [taskListState])
+
+  const markAsDone = ({ id }) => {
     const task = taskListState.filter((task, i) => task.id === id)
+    console.log(task[0].status)
     task[0].status = 'done'
-    setTaskListState(
-      taskListState.filter((task, i) => task.id !== id).concat(task[0])
-    )
-    console.log(taskListState)
+    setTaskListState((state) => {
+      return state.filter((task, i) => task.id !== id).concat(task[0])
+    })
   }
 
   return (
@@ -24,11 +26,11 @@ const MyTaskLayout = () => {
       <div>
         <h1 className='text-2xl font-extrabold'>My Task</h1>
 
-        <TaskListLayout />
+        <TaskWipLayout />
         <TaskDoneLayout />
       </div>
     </CardContext.Provider>
   )
 }
 
-export default MyTaskLayout
+export default TaskLayout

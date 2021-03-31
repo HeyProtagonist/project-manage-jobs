@@ -15,16 +15,16 @@ function App({ children }) {
   const [taskListState, setTaskListState] = useTaskList()
 
   return (
-    <div className='grid grid-cols-4 grid-rows-6 glassmorphism'>
-      <NavigationBarLayout />
-      <HeaderLayout />
-      <TaskContext.Provider value={{ taskListState, setTaskListState }}>
+    <TaskContext.Provider value={{ taskListState, setTaskListState }}>
+      <div className='grid grid-cols-4 grid-rows-6 glassmorphism'>
+        <NavigationBarLayout />
+        <HeaderLayout />
         <DndProvider backend={HTML5Backend}>
           <MainLayout children={children} />
         </DndProvider>
-      </TaskContext.Provider>
-    </div>
+      </div>
+    </TaskContext.Provider>
   )
 }
 
-export default React.memo(App)
+export default App
