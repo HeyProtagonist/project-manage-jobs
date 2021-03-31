@@ -10,8 +10,6 @@ export const CardContext = createContext({
 const TaskLayout = () => {
   const { taskListState, setTaskListState } = useContext(TaskContext)
 
-  // useEffect(() => console.log('Rendered: TaskLayout'), [taskListState])
-
   const markAsDone = ({ id }) => {
     const task = taskListState.filter((task, i) => task.id === id)
     console.log(task[0].status)
